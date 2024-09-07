@@ -37,7 +37,7 @@ const CreatePostForm = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant={"ghost"} size={"icon"}>
+        <Button variant={"ghost"} size={"icon"} id="open-create-post-btn">
           <Plus className="w-6 h-6" />
         </Button>
       </DialogTrigger>
