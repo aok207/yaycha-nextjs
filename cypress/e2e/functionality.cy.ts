@@ -90,12 +90,12 @@ describe("Post Creation Form", () => {
     cy.get('button[type="submit"]').click();
   });
 
-  it("Shoud be able to create new post", () => {
+  it("should be able to create new post", () => {
     cy.get("#open-create-post-btn").click();
     cy.get('textarea[name="content"]').type(
       "Hello, this is a test from cypress!"
     );
-    cy.get('button[type="submit"]').click();
+    cy.get('button[type="submit"]').contains("Post").click();
 
     // Check if the new post appear
     cy.contains("Hello, this is a test from cypress!").should("exist");
@@ -111,15 +111,15 @@ describe("Post Edit Form", () => {
     cy.get('button[type="submit"]').click();
   });
 
-  it("Shoud be able to edit existing post", () => {
-    cy.get('button[aria-label="Edit Post"]:first').click();
+  it("should be able to edit existing post", () => {
+    cy.get('button[aria-label="Edit Post"]').first().click();
 
     cy.contains("Edit Post").should("exist");
 
-    cy.get('textarea[name="content"]').type(
-      "Hello, this is a test from cypress! edited"
-    );
-    cy.get('button[type="submit"]').click();
+    cy.get('textarea[name="content"]')
+      .clear()
+      .type("Hello, this is a test from cypress! edited");
+    cy.get('button[type="submit"]').contains("Edit").click();
 
     // Check if the edited post appear
     cy.contains("Hello, this is a test from cypress! edited").should("exist");
@@ -135,12 +135,12 @@ describe("Post Delete", () => {
     cy.get('button[type="submit"]').click();
   });
 
-  it("Shoud be able to delete existing post", () => {
-    cy.get('button[aria-label="Delete Post"]:first').click();
+  it("should be able to delete existing post", () => {
+    cy.get('button[aria-label="Delete Post"]').first().click();
 
     // Check if the post is removed
     cy.contains("Hello, this is a test from cypress! edited").should(
-      "be.undefined"
+      "not.exist"
     );
   });
 });
