@@ -43,6 +43,11 @@ const Sidebar = ({ name }: { name: string }) => {
             <SheetTitle>Hello, {name}...</SheetTitle>
           </SheetHeader>
           <SheetClose asChild>
+            <Link href="/" className="w-full">
+              <Button className="w-full">All posts</Button>
+            </Link>
+          </SheetClose>
+          <SheetClose asChild>
             <Link href="/my-posts" className="w-full">
               <Button className="w-full">Your posts</Button>
             </Link>

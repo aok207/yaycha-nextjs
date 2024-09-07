@@ -22,7 +22,7 @@ export default async function MyPosts() {
   });
   return (
     <div className="mx-auto my-20 w-[95%] sm:w-1/2 flex flex-col gap-10">
-      <h1 className="font-extrabold text-3xl text-center">Your Posts</h1>
+      <h1 className="font-extrabold text-3xl text-center w-fit">Your Posts</h1>
       {posts?.map((post) => (
         <Post
           post={post}
