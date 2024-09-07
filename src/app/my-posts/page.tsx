@@ -2,10 +2,13 @@ import Post from "@/components/shared/post";
 import prisma from "@/lib/db";
 import { getSession } from "@/lib/session";
 
-export default async function Home() {
+export default async function MyPosts() {
   const session = await getSession();
 
   const posts = await prisma.post.findMany({
+    where: {
+      authorId: session?.user.id,
+    },
     include: {
       author: {
         select: {
@@ -19,6 +22,7 @@ export default async function Home() {
   });
   return (
     <div className="mx-auto my-20 w-[95%] sm:w-1/2 flex flex-col gap-10">
+      <h1 className="font-extrabold text-3xl text-center">Your Posts</h1>
       {posts?.map((post) => (
         <Post
           post={post}
